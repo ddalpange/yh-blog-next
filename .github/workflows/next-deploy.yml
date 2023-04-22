@@ -23,5 +23,5 @@ jobs:
       with:
         folder: out # The folder the action should deploy.
         branch: master
-        repository-name: ddalpange/ddalpange.github.io
+        repository-name: git@github.com:ddalpange/ddalpange.github.io.git
         ssh-key: ${{ secrets.ACCESS_TOKEN }}
