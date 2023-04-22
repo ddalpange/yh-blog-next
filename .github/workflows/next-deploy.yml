@@ -1,5 +1,8 @@
 name: deploy 🚀
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -19,6 +22,5 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: out # The folder the action should deploy.
-        token: ${{ secrets.ACCESS_TOKEN }}
         branch: master
         repository-name: ddalpange/ddalpange.github.io
