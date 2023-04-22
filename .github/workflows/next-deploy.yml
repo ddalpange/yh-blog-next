@@ -30,13 +30,13 @@ jobs:
           cache: "pnpm"
       - name: Install Node Modules
         run: pnpm install --frozen-lockfile
-      - name: Install and build
+      - name: Build
         run: |
           pnpm build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.BLOG_DEPLOY_KEY }}
+          personal_token: ${{ secrets.BLOG_DEPLOY_KEY }}
           external_repository: ddalpange/ddalpange.github.io
           publish_branch: master  # default: gh-pages
           publish_dir: ./out
