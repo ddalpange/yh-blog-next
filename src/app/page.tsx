@@ -1,6 +1,15 @@
 import { redirect } from "next/navigation";
+import { getAllPosts } from "~/post";
+import { PostView } from "./components/PostView";
 
 export default async function Home() {
 	redirect("/engineering");
-	return <div>Home</div>;
+	const posts = await getAllPosts();
+
+	return <main>
+		{posts
+			.map((post) => {
+				return <PostView key={post.slug} post={post} />;
+			})}
+	</main>;
 }

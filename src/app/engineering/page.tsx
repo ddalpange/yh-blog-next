@@ -9,7 +9,7 @@ export default async function Engineering() {
 			{posts
 				.filter((post) => !post.tags.includes("ESSAY"))
 				.map((post) => {
-					return <PostView key={post.slug} post={post}></PostView>;
+					return <PostView key={post.slug} post={post} />;
 				})}
 		</main>
 	);
