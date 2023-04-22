@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata = {
 	title: "Yozzing Blog",
@@ -14,7 +15,20 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" data-theme="retro">
-			<body className="flex flex-col items-center h-screen h-[100svh]">
+			<body className="flex flex-col items-center h-[100svh]">
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-XR7V7MF96T"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-XR7V7MF96T');
+        `}
+      </Script>
 				<div className="w-full max-w-3xl flex-grow">
 					<div className="navbar bg-base-100">
 						<div className="flex-1">
