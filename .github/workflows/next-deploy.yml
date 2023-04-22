@@ -1,0 +1,24 @@
+name: deploy 🚀
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install and build
+      run: |
+        npm install
+        npm run build
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: out # The folder the action should deploy.
+        token: ${{ secrets.ACCESS_TOKEN }}
+        branch: master
+        repository-name: ddalpange.github.io
