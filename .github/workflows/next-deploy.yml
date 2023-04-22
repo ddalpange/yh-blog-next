@@ -21,4 +21,4 @@ jobs:
         folder: out # The folder the action should deploy.
         token: ${{ secrets.ACCESS_TOKEN }}
         branch: master
-        repository-name: ddalpange.github.io
+        repository-name: ddalpange/ddalpange.github.io
