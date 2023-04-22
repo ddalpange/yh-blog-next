@@ -33,7 +33,7 @@ export default function RootLayout({
         `}
       </Script>
 				<div className="w-full max-w-3xl flex-grow">
-					<div className="navbar bg-base-100">
+					<div className="navbar">
 						<div className="flex-1">
 							<Link
 								className="p-2 hover:underline md:text-2xl font-bold flex gap-4 items-center"
