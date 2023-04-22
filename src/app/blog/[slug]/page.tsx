@@ -1,5 +1,6 @@
 import { getAllPosts, getPostBySlug } from "~/post";
 import { format } from "date-fns";
+import { Metadata } from "next";
 
 export default async function Post(props: any) {
 	const post = await getPostBySlug(props.params.slug);
@@ -10,6 +11,19 @@ export default async function Post(props: any) {
 			<div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
 		</article>
 	);
+}
+
+export async function generateMetadata(props: any): Promise<Metadata> {
+	const post = await getPostBySlug(props.params.slug);	
+  return {
+    title: post.title,
+		description: post.summary,
+		authors: [{
+			url: "https://github.io/ddalpange",
+			name: "ddalpange"
+		}],
+		keywords: post.tags,
+  };
 }
 
 export async function generateStaticParams() {
