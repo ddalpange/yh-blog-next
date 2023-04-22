@@ -45,10 +45,10 @@ export default function RootLayout({
 						<div className="flex-none">
 							<div className="tabs">
 								<Link className="tab" href="/engineering">
-									엔지니어링
+									Engineering
 								</Link>
 								<Link className="tab" href="/essay">
-									에세이
+									Essay
 								</Link>
 								<a className="tab" href="https://github.com/ddalpange">
 									<div className="avatar">
