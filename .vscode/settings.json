@@ -1,11 +1,15 @@
 {
   "typescript.tsdk": "node_modules/.pnpm/typescript@5.0.4/node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "editor.defaultFormatter": "vscode.typescript-language-features",
-  "[typescript]": {
-    "editor.defaultFormatter": "rome.rome"
+  "editor.defaultFormatter": "rome.rome",
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.css": "tailwindcss"
   },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "rome.rome"
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
   }
 }
