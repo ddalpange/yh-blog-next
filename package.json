@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "postbuild": "next-build",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -24,6 +25,7 @@
     "gray-matter": "^4.0.3",
     "html-react-parser": "^3.0.16",
     "next": "13.3.0",
+    "next-sitemap": "^4.0.7",
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
