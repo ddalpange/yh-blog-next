@@ -1,19 +1,30 @@
-import { getAllPosts, getPostBySlug } from "~/post";
-import { format } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 import { Metadata } from "next";
+import { HtmlString } from "~/app/components/HtmlString";
+import { getAllPosts, getPostBySlug } from "~/post";
 
-export default async function Post(props: any) {
+type Props = {
+	params: {
+		slug: string;
+	}	
+}
+
+export default async function PostBySlug(props: Props) {
 	const post = await getPostBySlug(props.params.slug);
 	return (
-		<article className="prose">
+		<article className="prose max-w-full flex flex-col items-center" >
+			<span className="mb-2">{formatDistanceToNow(post.date, {
+				addSuffix: true
+			})}</span>
 			<h1>{post.title}</h1>
-			<caption>{format(post.date, "yyyy/MM/dd")}</caption>
-			<div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+			<div>
+				<HtmlString className="prose self-center" content={post.contentHtml}/>
+			</div>
 		</article>
 	);
 }
 
-export async function generateMetadata(props: any): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
 	const post = await getPostBySlug(props.params.slug);	
   return {
     title: post.title,

@@ -16,6 +16,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" data-theme="retro">
 			<head>
+				<link rel="preconnect" href="https://cdn.jsdelivr.net" />
 				<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
 			</head>
 			<body className="flex flex-col items-center h-[100svh]">

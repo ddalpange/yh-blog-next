@@ -8,5 +8,11 @@
 		"rules": {
 			"recommended": true
 		}
+	},
+	"javascript": {
+		"formatter": {
+			"semicolons": "always",
+			"quoteProperties": "preserve"
+		}
 	}
 }
