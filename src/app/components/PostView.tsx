@@ -5,7 +5,7 @@ import { Post } from "../../post";
 import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 import { HtmlString } from "./HtmlString";
-
+import { ko } from "date-fns/locale";
 type Props = {
 	post: Post;
 };
@@ -32,11 +32,15 @@ export const PostView = (props: Props) => {
 				</h2>
 				<p className="text-sm text-base-content/70">
 					{formatDistanceToNow(date, {
-				addSuffix: true
-			})}
+						addSuffix: true,
+						locale: ko,
+					})}
 				</p>
 				{summary && (
-					<HtmlString className="text-sm text-base-content/90" content={summary} />
+					<HtmlString
+						className="text-sm text-base-content/90"
+						content={summary}
+					/>
 				)}
 			</div>
 		</div>

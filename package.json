@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "rome check --apply-unsafe ./src",
+    "format": "rome format --write ./src",
     "go": "git add . && git commit -m '🛫' && git push && echo 'https://github.com/ddalpange/yh-blog-next/actions'"
   },
   "dependencies": {

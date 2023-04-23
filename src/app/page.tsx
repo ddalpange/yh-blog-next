@@ -6,10 +6,11 @@ export default async function Home() {
 	redirect("/engineering");
 	const posts = await getAllPosts();
 
-	return <main>
-		{posts
-			.map((post) => {
+	return (
+		<main>
+			{posts.map((post) => {
 				return <PostView key={post.slug} post={post} />;
 			})}
-	</main>;
+		</main>
+	);
 }

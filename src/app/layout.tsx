@@ -17,22 +17,26 @@ export default function RootLayout({
 		<html lang="en" data-theme="retro">
 			<head>
 				<link rel="preconnect" href="https://cdn.jsdelivr.net" />
-				<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
+				<link
+					rel="stylesheet"
+					type="text/css"
+					href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
+				/>
 			</head>
 			<body className="flex flex-col items-center h-[100svh]">
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-XR7V7MF96T"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
+				<Script
+					src="https://www.googletagmanager.com/gtag/js?id=G-XR7V7MF96T"
+					strategy="afterInteractive"
+				/>
+				<Script id="google-analytics" strategy="afterInteractive">
+					{`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'G-XR7V7MF96T');
         `}
-      </Script>
+				</Script>
 				<div className="w-full max-w-3xl flex-grow">
 					<div className="navbar">
 						<div className="flex-1">
