@@ -8,6 +8,7 @@ specifiers:
   autoprefixer: 10.4.14
   daisyui: ^2.51.5
   date-fns: ^2.29.3
+  disqus-react: ^1.1.5
   eslint: 8.38.0
   eslint-config-next: 13.3.0
   gray-matter: ^4.0.3
@@ -30,6 +31,7 @@ dependencies:
   autoprefixer: 10.4.14_postcss@8.4.23
   daisyui: 2.51.5_zmwpaxxolxfsc5pnrezed2bx24
   date-fns: 2.29.3
+  disqus-react: 1.1.5_biqbaboplfbrettd7655fr4n2y
   eslint: 8.38.0
   eslint-config-next: 13.3.0_voubu7prgxjfsfbgx5d4sqnwiy
   gray-matter: 4.0.3
@@ -904,6 +906,16 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       path-type: 4.0.0
+    dev: false
+
+  /disqus-react/1.1.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-9fdG5m6c3wJzlCDLaMheuUagMVj3s5qgUSXdekpCsvzYOKG21AiuOoqyDzA0oXrpPnYzgpnsvPYqZ+i0hJPGZw==}
+    peerDependencies:
+      react: ^15.6.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.6.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /dlv/1.1.3:

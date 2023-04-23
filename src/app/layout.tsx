@@ -54,7 +54,7 @@ export default function RootLayout({
 								<a className="tab" href="https://github.com/ddalpange">
 									<div className="avatar">
 										<div className="w-8 rounded-full">
-											<img src="/blog/images/profile.jpeg" />
+											<img alt="yozzing" src="/blog/images/profile.jpeg" />
 										</div>
 									</div>
 								</a>

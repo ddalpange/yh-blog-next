@@ -1,5 +1,6 @@
 import { formatDistanceToNow } from "date-fns";
 import { Metadata } from "next";
+import { Disqus } from "~/app/components/Disqus";
 import { HtmlString } from "~/app/components/HtmlString";
 import { getAllPosts, getPostBySlug } from "~/post";
 
@@ -20,6 +21,7 @@ export default async function PostBySlug(props: Props) {
 			<div>
 				<HtmlString className="prose self-center" content={post.contentHtml}/>
 			</div>
+			<Disqus post={post} />
 		</article>
 	);
 }
