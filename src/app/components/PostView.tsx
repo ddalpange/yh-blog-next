@@ -6,6 +6,7 @@ import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 import { HtmlString } from "./HtmlString";
 import { ko } from "date-fns/locale";
+
 type Props = {
 	post: Post;
 };
