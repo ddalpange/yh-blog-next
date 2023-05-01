@@ -14,6 +14,7 @@ type Props = {
 export const PostView = (props: Props) => {
 	const { post } = props;
 	const { link, title, summary, thumbnail, date } = post;
+
 	return (
 		<div className="py-6 flex flex-row-reverse gap-6 md:gap-10 items-start">
 			{thumbnail && (
