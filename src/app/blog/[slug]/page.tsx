@@ -13,10 +13,11 @@ type Props = {
 
 export default async function PostBySlug(props: Props) {
 	const post = await getPostBySlug(props.params.slug);
+	console.log(post)
 	return (
 		<article className="prose max-w-full flex flex-col items-center">
 			<span className="mb-2">
-				{formatDistanceToNow(post.date, {
+				{formatDistanceToNow(new Date(post.date), {
 					addSuffix: true,
 					locale: ko,
 				})}

@@ -33,7 +33,7 @@ export const PostView = (props: Props) => {
 					</Link>
 				</h2>
 				<p className="text-sm text-base-content/70">
-					{formatDistanceToNow(date, {
+					{formatDistanceToNow(new Date(date), {
 						addSuffix: true,
 						locale: ko,
 					})}

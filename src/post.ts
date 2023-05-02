@@ -3,19 +3,22 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import { Octokit } from "@octokit/rest";
 
 const postsDirectory = path.join(process.cwd(), "/public/blog");
+const octokit = new Octokit();
 
 export type Post = {
 	title: string;
 	thumbnail?: string;
 	summary?: string;
-	date: Date;
+	date: string;
 	content: string;
 	contentHtml: string;
 	slug: string;
 	link: string;
 	tags: string[];
+	original?: any;
 };
 
 const toHtml = async (content: string) =>
@@ -37,7 +40,7 @@ export async function generatePostFromLocal(slug: string): Promise<Post> {
 
 	return {
 		...data,
-		date: new Date(data.date),
+		date: new Date(data.date).toISOString(),
 		tags: data.tags ?? [],
 		content,
 		contentHtml: await toHtml(content),
@@ -56,6 +59,23 @@ export const generatePosts = async () => {
 			const post = await generatePostFromLocal(slug);
 			posts.push(post);
 		}
+		const { data } = await octokit.issues.listForRepo({
+			repo: "yh-blog-next",
+			owner: "ddalpange"
+		});
+		for (const issue of data) {
+			posts.push({
+				title: issue.title,
+				date: new Date(issue.created_at).toISOString(),
+				content: issue.body ?? "",
+				contentHtml: issue.body ?? "",
+				slug: encodeURIComponent(issue.title),
+				link: `/blog/${encodeURIComponent(issue.title)}`,
+				original: issue,
+				tags: []
+			})
+		}
+		posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 	}
 	return posts;
 }
@@ -65,5 +85,6 @@ export async function getAllPosts() {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post> {
-	return (await getAllPosts()).find(({ slug: postSlug }) => postSlug === slug)!
+	const posts = await getAllPosts();
+	return posts.find(({ slug: postSlug }) => postSlug === slug)!
 }
