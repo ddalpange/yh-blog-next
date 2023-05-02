@@ -12,6 +12,7 @@
     "go": "git add . && git commit -m '🛫' && git push && echo 'https://github.com/ddalpange/yh-blog-next/actions'"
   },
   "dependencies": {
+    "@octokit/rest": "^19.0.7",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.15.13",
     "@types/react": "18.0.37",
@@ -20,6 +21,7 @@
     "daisyui": "^2.51.5",
     "date-fns": "^2.29.3",
     "disqus-react": "^1.1.5",
+    "encoding": "^0.1.13",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "gray-matter": "^4.0.3",
