@@ -6,49 +6,50 @@ import { HtmlString } from "~/app/components/HtmlString";
 import { getAllPosts, getPostBySlug } from "~/app/post";
 
 type Props = {
-	params: {
-		slug: string;
-	};
+  params: {
+    slug: string;
+  };
 };
 
 export default async function PostBySlug(props: Props) {
-	const post = await getPostBySlug(props.params.slug);
-
-	return (
-		<article className="prose max-w-full flex flex-col items-center">
-			<span className="mb-2">
-				{formatDistanceToNow(new Date(post.date), {
-					addSuffix: true,
-					locale: ko,
-				})}
-			</span>
-			<h1>{post.title}</h1>
-			<div>
-				<HtmlString className="prose self-center" content={post.contentHtml} />
-			</div>
-			<Disqus post={post} />
-		</article>
-	);
+  const post = await getPostBySlug(props.params.slug);
+  if (!post) return <div>undefined</div>;
+  return (
+    <article className="prose max-w-full flex flex-col items-center">
+      <span className="mb-2">
+        {formatDistanceToNow(new Date(post.date), {
+          addSuffix: true,
+          locale: ko,
+        })}
+      </span>
+      <h1>{post.title}</h1>
+      <div>
+        <HtmlString className="prose self-center" content={post.contentHtml} />
+      </div>
+      <Disqus post={post} />
+    </article>
+  );
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-	const post = await getPostBySlug(props.params.slug);
-	return {
-		title: post.title,
-		description: post.summary,
-		authors: [
-			{
-				url: "https://github.io/ddalpange",
-				name: "ddalpange",
-			},
-		],
-		keywords: post.tags,
-	};
+  const post = await getPostBySlug(props.params.slug);
+  if (!post) return {};
+  return {
+    title: post.title,
+    description: post.summary,
+    authors: [
+      {
+        url: "https://github.io/ddalpange",
+        name: "ddalpange",
+      },
+    ],
+    keywords: post.tags,
+  };
 }
 
 export async function generateStaticParams() {
-	const posts = await getAllPosts();
-	return posts.map((post) => ({
-		slug: post.slug,
-	}));
+  const posts = await getAllPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }

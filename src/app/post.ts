@@ -1,10 +1,12 @@
+import "server-only";
 import { promises as fs } from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 import { Octokit } from "@octokit/rest";
-import { log } from "console";
+
+import { cache } from "react";
 
 const postsDirectory = path.join(process.cwd(), "/public/blog");
 const octokit = new Octokit();
@@ -58,17 +60,8 @@ export const generatePosts = async () => {
       const post = await generatePostFromLocal(slug);
       posts.push(post);
     }
-    const res = await fetch("https://api.github.com/repos/ddalpange/yh-blog-next/issues", {
-      cache: "force-cache",
-      headers: {
-        Accept: "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-        Authorization: `Bearer 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`,
-      },
-    });
-    const data = await res.json();
+    const { data } = await issueForRepo();
     for (const issue of data) {
-      log(issue);
       posts.push({
         title: issue.title,
         date: new Date(issue.created_at).toISOString(),
@@ -81,19 +74,23 @@ export const generatePosts = async () => {
       });
     }
     posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-    return posts!;
   }
+  return posts;
 };
 
+const issueForRepo = cache(async () => {
+  return await octokit.issues.listForRepo({
+    owner: "ddalpange",
+    repo: "yh-blog-next",
+  });
+});
+
 export async function getAllPosts() {
-  await generatePosts();
-  return posts;
+  return await generatePosts();
 }
 
 export async function getPostBySlug(slug: string): Promise<Post> {
   const posts = await getAllPosts();
-  const post = posts?.find(({ slug: postSlug }) => postSlug === slug);
-  if (!post) throw Error(`${slug} is not found`);
-  return post;
+  const post = posts.find(({ slug: postSlug }) => postSlug === slug);
+  return post!;
 }
