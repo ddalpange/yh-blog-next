@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import React from "react";
-import { Post } from "~/post";
+import { Post } from "~/app/post";
 import { DiscussionEmbed } from "disqus-react";
 
 type Props = {

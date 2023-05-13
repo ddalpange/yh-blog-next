@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import React from "react";
-import { Post } from "../../post";
+import { Post } from "../post";
 import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 import { HtmlString } from "./HtmlString";

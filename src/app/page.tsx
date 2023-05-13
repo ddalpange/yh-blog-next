@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getAllPosts } from "~/post";
+import { getAllPosts } from "~/app/post";
 import { PostView } from "./components/PostView";
 
 export default async function Home() {

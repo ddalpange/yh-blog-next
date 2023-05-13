@@ -1,4 +1,4 @@
-import { getAllPosts } from "~/post";
+import { getAllPosts } from "~/app/post";
 import { PostView } from "~/app/components/PostView";
 import { Intro } from "../components/Intro";
 

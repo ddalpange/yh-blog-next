@@ -3,7 +3,7 @@ import { ko } from "date-fns/locale";
 import { Metadata } from "next";
 import { Disqus } from "~/app/components/Disqus";
 import { HtmlString } from "~/app/components/HtmlString";
-import { getAllPosts, getPostBySlug } from "~/post";
+import { getAllPosts, getPostBySlug } from "~/app/post";
 
 type Props = {
 	params: {
@@ -13,7 +13,7 @@ type Props = {
 
 export default async function PostBySlug(props: Props) {
 	const post = await getPostBySlug(props.params.slug);
-	console.log(post)
+
 	return (
 		<article className="prose max-w-full flex flex-col items-center">
 			<span className="mb-2">
