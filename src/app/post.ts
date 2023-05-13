@@ -9,6 +9,7 @@ import { Octokit } from "@octokit/rest";
 import { cache } from "react";
 
 const postsDirectory = path.join(process.cwd(), "/public/blog");
+
 const octokit = new Octokit();
 
 export type Post = {
