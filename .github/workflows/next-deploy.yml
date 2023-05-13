@@ -1,43 +1,43 @@
-name: deploy 🚀
+# name: deploy 🚀
 
-permissions:
-  contents: write
+# permissions:
+#   contents: write
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+# on:
+#   push:
+#     branches:
+#       - main
+#   workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ["18.x"]
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.3.1
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
-      - name: Install Node Modules
-        run: pnpm install
-      - name: Build
-        run: |
-          pnpm build
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     personal_token: ${{ secrets.BLOG_DEPLOY_KEY }}
-      #     external_repository: ddalpange/ddalpange.github.io
-      #     publish_branch: master  # default: gh-pages
-      #     publish_dir: ./out
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: ["18.x"]
+#     steps:
+#       - name: Checkout branch
+#         uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#       - name: Setup pnpm
+#         uses: pnpm/action-setup@v2
+#         with:
+#           version: 8.3.1
+#       - name: Setup Node
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: ${{ matrix.node-version }}
+#           cache: "pnpm"
+#       - name: Install Node Modules
+#         run: pnpm install
+#       - name: Build
+#         run: |
+# pnpm build
+# - name: Deploy
+#   uses: peaceiris/actions-gh-pages@v3
+#   with:
+#     personal_token: ${{ secrets.BLOG_DEPLOY_KEY }}
+#     external_repository: ddalpange/ddalpange.github.io
+#     publish_branch: master  # default: gh-pages
+#     publish_dir: ./out
